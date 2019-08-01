@@ -3,18 +3,15 @@ service: lumigo-playground
 frameworkVersion: ">=1.1.0 <2.0.0"
 
 plugins:
-  # - '@wingsy/serverless-plugin-service-gateway'
-  # - '@wingsy/serverless-plugin-sqs-from-sns'
+  - '@wingsy/serverless-plugin-service-gateway'
+  - '@wingsy/serverless-plugin-sqs-from-sns'
   - serverless-pseudo-parameters
   - serverless-export-env
 
-# custom:
-#   messageBusTopicArn: ${cf:${self:provider.stage}-message-bus.MessageBusTopicArn}
-#   authorizerId: ${cf:${self:provider.stage}-user-service.AuthorizerId}
-#   serviceGateway:
-#     apiId: ${cf:${self:provider.stage}-api-gateway.ApiId}
-#     parentId: ${cf:${self:provider.stage}-api-gateway.RootResourceId}
-#     servicePath: videos
+custom:
+  serviceGateway:
+    apiId: ${cf:${self:provider.stage}-api-gateway.ApiId}
+    parentId: ${cf:${self:provider.stage}-api-gateway.RootResourceId}
 provider:
   name: aws
   runtime: nodejs8.10
@@ -87,11 +84,19 @@ functions:
       MESSAGE: 'i am the sns message handler'
     events:
       - sns: ${self:provider.environment.SNS_TOPIC}
-  # produce-video:
-  #   handler: dist/produce-video/produce-video.handler
-  #   events:
-  #       - sqs-from-sns:
-  #           topicArn: ${self:custom.messageBusTopicArn}
+  onSnsMessage2:
+    handler: dist/noop.handler
+    environment:
+      MESSAGE: 'i am the sns message handler2'
+    events:
+      - sns: ${self:provider.environment.SNS_TOPIC}      
+  onSnsViaSqs:
+    handler: dist/noop.handler
+    environment:
+      MESSAGE: 'i am the sns-from-sqs message handler'
+    events:
+        - sqs-from-sns:
+            topicArn: ${self:provider.environment.SNS_TOPIC_ARN}
 
 resources:
   - ${file(resources/lumigo-table.yml)}
