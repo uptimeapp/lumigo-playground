@@ -3,12 +3,12 @@ import { APIGatewayProxyHandler } from 'aws-lambda';
 import uuid = require('uuid');
 import { DynamoDB } from 'aws-sdk';
 
-const LumigoTracer = require('@lumigo/node-tracer');
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const lumigo = require('@lumigo/node-tracer')({
+    token: process.env.LUMIGO_TOKEN
+});
 const moment = require('moment');
 
-const tracer = new LumigoTracer({
-    'token': process.env.LUMIGO_TOKEN
-});
 
 const dynamoDbDocumentClient = new DynamoDB.DocumentClient();
 
@@ -32,4 +32,4 @@ const dynamo: APIGatewayProxyHandler = async function() {
     };
 }
 
-export const handler = tracer.trace(dynamo);
+export const handler = lumigo.trace(dynamo);

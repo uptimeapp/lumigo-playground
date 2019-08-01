@@ -3,11 +3,11 @@ import { APIGatewayProxyHandler } from 'aws-lambda';
 import uuid = require('uuid');
 import { SNS } from 'aws-sdk';
 
-const LumigoTracer = require('@lumigo/node-tracer');
 const moment = require('moment');
 
-const tracer = new LumigoTracer({
-    'token': process.env.LUMIGO_TOKEN
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const lumigo = require('@lumigo/node-tracer')({
+    token: process.env.LUMIGO_TOKEN
 });
 
 
@@ -39,4 +39,4 @@ async function sendMessage(message: any) {
 }
 
 
-export const handler = tracer.trace(snsHandler);
+export const handler = lumigo.trace(snsHandler);
