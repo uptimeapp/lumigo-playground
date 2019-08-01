@@ -89,7 +89,7 @@ functions:
     environment:
       MESSAGE: 'i am the sns message handler2'
     events:
-      - sns: ${self:provider.environment.SNS_TOPIC}      
+      - sns: ${self:provider.environment.SNS_TOPIC}            
   onSnsViaSqs:
     handler: dist/noop.handler
     environment:
@@ -97,6 +97,15 @@ functions:
     events:
         - sqs-from-sns:
             topicArn: ${self:provider.environment.SNS_TOPIC_ARN}
+  onSnsToClock:
+    handler: dist/clock.handler
+    events:
+      - sns: ${self:provider.environment.SNS_TOPIC}                  
+  onSnsToDynamo:
+    handler: dist/dynamo.handler
+    events:
+      - sns: ${self:provider.environment.SNS_TOPIC}                  
+
 
 resources:
   - ${file(resources/lumigo-table.yml)}
