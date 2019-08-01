@@ -1,8 +1,6 @@
 {
-  "name": "@wingsy/video-service",
-  "version": "1.0.4",
-  "types": "dist/video.d.ts",
-  "typings": "dist/video.d.ts",
+  "name": "@wingsy/lumigo",
+  "version": "1.0.0",
   "scripts": {
     "test": "jest",
     "test:ci": "jest --runInBand --ci --reporters=default --reporters=jest-junit --coverage",
@@ -13,18 +11,17 @@
     "clean": "rm -rf dist",
     "install:dynamodb": "sls dynamodb install"
   },
-  "files": [
-    "dist/video.d.ts"
-  ],
   "license": "UNLICENSED",
   "dependencies": {
     "@lumigo/tracer": "^1.0.54",
     "aws-sdk": "^2.503.0",
+    "axios": "^0.19.0",
     "moment": "^2.24.0"
   },
   "devDependencies": {
     "@types/aws-lambda": "^8.10.27",
     "@types/aws-sdk": "^2.7.0",
+    "@types/axios": "^0.14.0",
     "@types/is-url": "^1.2.28",
     "@types/jest": "^24.0.15",
     "@types/node": "^11.13.8",
@@ -33,7 +30,6 @@
     "@typescript-eslint/parser": "^1.7.0",
     "@wingsy/serverless-plugin-service-gateway": "^1.0.2",
     "@wingsy/serverless-plugin-sqs-from-sns": "^1.0.2",
-    "axios": "^0.19.0",
     "dotenv": "^8.0.0",
     "eslint": "^5.16.0",
     "jest": "^24.8.0",

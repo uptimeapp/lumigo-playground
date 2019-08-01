@@ -63,6 +63,13 @@ functions:
           path: /sns
           method: get          
           cors: true          
+  clock:
+    handler: dist/clock.handler
+    events:
+      - http:
+          path: /clock
+          method: get          
+          cors: true                    
   dynamoStream:
     handler: dist/noop.handler
     environment:
