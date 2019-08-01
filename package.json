@@ -1,0 +1,50 @@
+{
+  "name": "@wingsy/video-service",
+  "version": "1.0.4",
+  "types": "dist/video.d.ts",
+  "typings": "dist/video.d.ts",
+  "scripts": {
+    "test": "jest",
+    "test:ci": "jest --runInBand --ci --reporters=default --reporters=jest-junit --coverage",
+    "build": "yarn clean && tsc",
+    "dev": "yarn clean && tsc --watch",
+    "deploy": "yarn build && sls deploy",
+    "lint": "eslint --fix src/**/*.*",
+    "clean": "rm -rf dist",
+    "install:dynamodb": "sls dynamodb install"
+  },
+  "files": [
+    "dist/video.d.ts"
+  ],
+  "license": "UNLICENSED",
+  "dependencies": {
+    "@lumigo/tracer": "^1.0.54",
+    "aws-sdk": "^2.503.0",
+    "moment": "^2.24.0"
+  },
+  "devDependencies": {
+    "@types/aws-lambda": "^8.10.27",
+    "@types/aws-sdk": "^2.7.0",
+    "@types/is-url": "^1.2.28",
+    "@types/jest": "^24.0.15",
+    "@types/node": "^11.13.8",
+    "@types/uuid": "^3.4.4",
+    "@typescript-eslint/eslint-plugin": "^1.7.0",
+    "@typescript-eslint/parser": "^1.7.0",
+    "@wingsy/serverless-plugin-service-gateway": "^1.0.2",
+    "@wingsy/serverless-plugin-sqs-from-sns": "^1.0.2",
+    "axios": "^0.19.0",
+    "dotenv": "^8.0.0",
+    "eslint": "^5.16.0",
+    "jest": "^24.8.0",
+    "jest-junit": "^6.4.0",
+    "serverless": "^1.44.1",
+    "serverless-export-env": "^1.2.0",
+    "serverless-pseudo-parameters": "^2.4.0",
+    "ts-jest": "^24.0.2",
+    "typescript": "^3.5.3"
+  },
+  "jest-junit": {
+    "outputDirectory": "./test-results"
+  }
+}

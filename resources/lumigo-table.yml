@@ -1,0 +1,17 @@
+Resources:    
+  LumigoDynamoDbTable:
+    Type: 'AWS::DynamoDB::Table'
+    DeletionPolicy: Retain
+    Properties:
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions:
+        -
+          AttributeName: id
+          AttributeType: S
+      KeySchema:
+        -
+          AttributeName: id
+          KeyType: HASH
+      TableName: ${self:provider.environment.DYNAMODB_LUMIGO_TABLE}
+      StreamSpecification:
+        StreamViewType: "NEW_AND_OLD_IMAGES"
