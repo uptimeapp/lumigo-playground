@@ -3,7 +3,7 @@ import { APIGatewayProxyHandler } from 'aws-lambda';
 import uuid = require('uuid');
 import { SNS } from 'aws-sdk';
 
-const LumigoTracer = require('@lumigo/tracer');
+const LumigoTracer = require('@lumigo/node-tracer');
 const moment = require('moment');
 
 const tracer = new LumigoTracer({

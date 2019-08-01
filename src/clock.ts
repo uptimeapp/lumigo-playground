@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 import { APIGatewayProxyHandler } from 'aws-lambda';
 import axios from 'axios';
-const LumigoTracer = require('@lumigo/tracer');
+const LumigoTracer = require('@lumigo/node-tracer');
 
 const tracer = new LumigoTracer({
     'token': process.env.LUMIGO_TOKEN

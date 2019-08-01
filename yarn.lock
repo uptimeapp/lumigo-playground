@@ -285,14 +285,10 @@
     "@types/istanbul-reports" "^1.1.1"
     "@types/yargs" "^12.0.9"
 
-"@lumigo/tracer@^1.0.54":
-  version "1.0.54"
-  resolved "https://registry.yarnpkg.com/@lumigo/tracer/-/tracer-1.0.54.tgz#0d68353d4948bb1f26640f4b7f531fd946048218"
-  integrity sha512-NeNF+iC4KsVIgLIS2Hg5wF+CFu8FMkdPgPW/i6L1d0j/KE9MCwywQWiKQG5rGUgwbEfu4czR9G2FAidU1Bdhsg==
-  dependencies:
-    dot-prop "^4.2.0"
-    global-request-logger "github:lumigo/global-request-logger"
-    uuid "^3.3.2"
+"@lumigo/node-tracer@^1.0.12":
+  version "1.0.12"
+  resolved "https://registry.yarnpkg.com/@lumigo/node-tracer/-/node-tracer-1.0.12.tgz#fa632cb0829213014ee97910c3e49736ef64acb9"
+  integrity sha512-az4fDR7HIhq9750VP1d+IQQgjOlaGSL62Gi76jVDOExQHNlO4p6Go8ePvBIU2xZKZd9oUE2s9FUDqeMBUgAnkw==
 
 "@serverless/enterprise-plugin@^1.0.7":
   version "1.1.0"
@@ -1593,7 +1589,7 @@ domexception@^1.0.1:
   dependencies:
     webidl-conversions "^4.0.2"
 
-dot-prop@^4.1.0, dot-prop@^4.2.0:
+dot-prop@^4.1.0:
   version "4.2.0"
   resolved "https://registry.yarnpkg.com/dot-prop/-/dot-prop-4.2.0.tgz#1f19e0c2e1aa0e32797c49799f2837ac6af69c57"
   integrity sha512-tUMXrxlExSW6U2EXiiKGSBVdYgtV8qlHL+C10TsW4PURY/ic+eaysnSkwB4kA/mBlCyy/IKDJ+Lc3wbWeaXtuQ==
@@ -2339,10 +2335,6 @@ global-dirs@^0.1.0:
   integrity sha1-sxnA3UYH81PzvpzKTHL8FIxJ9EU=
   dependencies:
     ini "^1.3.4"
-
-"global-request-logger@github:lumigo/global-request-logger":
-  version "1.0.0"
-  resolved "https://codeload.github.com/lumigo/global-request-logger/tar.gz/17b6f149e38acfe5522de455d596ccdea7661d3f"
 
 globals@^11.1.0, globals@^11.7.0:
   version "11.12.0"
