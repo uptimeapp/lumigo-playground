@@ -105,7 +105,11 @@ functions:
     handler: dist/dynamo.handler
     events:
       - sns: ${self:provider.environment.SNS_TOPIC}                  
-
+  snsFromSqs:
+    handler: dist/sns-from-sqs.handler
+    events:
+      - sqs-from-sns:
+          topicArn: ${self:provider.environment.SNS_TOPIC_ARN}
 
 resources:
   - ${file(resources/lumigo-table.yml)}
